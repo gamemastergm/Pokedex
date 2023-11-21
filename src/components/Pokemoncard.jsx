@@ -1,39 +1,66 @@
 import "../App.css";
 import CardMedia from "@mui/material/CardMedia";
-import Card from "@mui/material/Card";
-import { CardContent } from "@mui/material";
+import { Text } from "../styles";
 
-function Pokemoncard({ name, img }) {
-    return (
-        <>
-        
-            <div style={{
-                display: "flex",
-                alignItems: "center",
-                textAlign: "center",
-                width: "100%",
-                height: "100%",
-            }}>
-                
-                <Card style={{
-                    display: "flex",
-                    alignItems: "center",
-                    textAlign: "center",
-                    flexDirection: "column",
-                    boxShadow: "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px",
-                    margin: "10px",
-                    borderRadius: "15px 15px 15px 15px",
-                    width: "100px",
-                    height: "140px",
-                }} sx={{ maxWidth: 345 }}>
-                        <CardMedia component="img" image={img} alt="green iguana"></CardMedia>
-                        <CardContent>
-                            <div sx={{ fontStyle: 'italic', textTransform: 'uppercase', fontWeight: 'bold', fontSize: 20 }} >{name}</div>
-                        </CardContent>
-                </Card>
-            </div>
-        </>
-    );
+function Pokemoncard({ name, img, status }) {
+  return (
+    <>
+      <div class="windowSize">
+        <div class="windowSize"
+          style={{
+            width: "100px",
+            maxWidth: "150px",
+            maxHeight: "200px",
+            margin: "10px",
+            flexDirection: "column",
+            flexWrap: "wrap",
+            borderRadius: "15px",
+            boxShadow: "20px 20px 50px rgba(0,0,0,0.5)",
+            background: "rgba(255,255,255,0.1)",
+            overflow: "hidden",
+            borderTop: "1px solid rgba(255,255,255, 0.5)",
+            borderRight: "1px solid rgba(255,255,255, 0.5)",
+            zIndex: 1,
+          }}
+          sx={{ maxWidth: 345 }}
+        >
+          <div
+            style={{
+              position: "flex",
+              paddingTop: "10px",
+              paddingLeft: "20px",
+              fontSize: "15px",
+              color: "rgba(255,255,255,0.25)",
+              pointerEvents: "none",
+              
+            }}
+          >
+           {status ? "Pokemon": <Text style={{margin: 0, padding: 0,}}>Pokemon</Text>} 
+          </div>
+          <CardMedia
+            component="img"
+            image={img}
+            style={{
+            filter: status ? "":"brightness(0%)"}}
+            alt="green iguana"
+          />
+          <div>
+            <Text
+              style={{
+                padding: 0,
+                textTransform: "capitalize",
+                fontSize: 12,
+                fontWeight: "bold",
+                zIndex: 2,
+              }}
+            >
+              {status ? name : "WHO'S THAT"}
+            </Text>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Pokemoncard;
